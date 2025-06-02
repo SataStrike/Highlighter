@@ -7,6 +7,7 @@ import re
 import os
 import pandas as pd
 import threading
+import subprocess
 
 # Import our modules
 from domains_highlighter import calculate_and_save_differences, percentage_to_decimal
@@ -1386,7 +1387,13 @@ class MainApplication(ttk.Frame):
             
             # Ask if user wants to open the file
             if messagebox.askyesno("Success", f"Processing complete! Open the output file?\n\n{output_path}"):
-                os.startfile(output_path)
+                # Cross-platform solution to open files
+                if sys.platform == "win32":
+                    os.startfile(output_path)
+                elif sys.platform == "darwin":  # macOS
+                    subprocess.call(["open", output_path])
+                else:  # Linux
+                    subprocess.call(["xdg-open", output_path])
                 
         except Exception as e:
             self.log_status(f"Error: {str(e)}")

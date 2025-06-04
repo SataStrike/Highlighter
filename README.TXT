@@ -1,4 +1,7 @@
 Domains Highlighter MVP
+
+To run the application in your terminal run Domain highlight gui V3.py
+
 Overview
 Domains Highlighter is a GUI application for analyzing and processing domain data for advertising and revenue optimization. The tool integrates several key features including domain difference calculation, supply chain validation, error distribution analysis, and revenue optimization.
 
